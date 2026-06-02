@@ -2850,7 +2850,16 @@ function printQR() {
             <title>Impression QR Codes</title>
             <style>
                 body { font-family: Arial, sans-serif; padding: 20px; }
-                .qr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+                .qr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+canvas, img {
+    width: 150px !important;
+    height: 150px !important;
+}
                 canvas, img { width: 120px !important; height: 120px !important; }
             </style>
         </head>
