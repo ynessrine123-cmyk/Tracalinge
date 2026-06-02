@@ -2840,7 +2840,7 @@ function clearQR(){var c=document.getElementById('qrContainer');if(c)c.innerHTML
 
 <script>
 function printQR() {
-    const contenu = document.getElementById('qrContainer').innerHTML;
+    const zone = document.getElementById('qrContainer');
 
     const fenetre = window.open('', '_blank');
 
@@ -2849,21 +2849,23 @@ function printQR() {
         <head>
             <title>Impression QR Codes</title>
             <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    padding: 20px;
-                }
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                .qr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+                canvas, img { width: 120px !important; height: 120px !important; }
             </style>
         </head>
         <body>
-            ${contenu}
+            ${zone.outerHTML}
         </body>
         </html>
     `);
 
     fenetre.document.close();
-    fenetre.focus();
-    fenetre.print();
+
+    setTimeout(() => {
+        fenetre.focus();
+        fenetre.print();
+    }, 800);
 }
 </script>
 
